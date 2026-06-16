@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Yatra: A Journey for the Soul | Discover India</title>
+    
+<script src="https://cdn.tailwindcss.com"></script>
+    
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght[300;400;500;600;700]&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fefbf6; /* Soft, warm background */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Gradient for a softer overlay */
+            background-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%);
+        }
+        .text-maroon-600 { color: #800000; } /* Custom maroon for accents */
+        .bg-saffron-100 { background-color: #FFF3E0; } /* Light saffron-like background */
+        .border-gold-500 { border-color: #FFD700; } /* Gold accent for borders */
+        .shadow-cultural {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.08);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        /* Style for the custom modal (Trip Planner) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fefbf6;
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal-show .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /* Styles for dynamic page transition */
+        .page-content {
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-hidden {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .page-visible {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+<a href="#" id="home-logo" class="flex-shrink-0 text-3xl font-bold text-maroon-600">
+                    भारत यात्रा
+                </a>
+                
+<div class="hidden md:flex space-x-8">
+                    <a href="#regions" class="text-gray-700 hover:text-maroon-600 transition duration-150 font-medium">Regions</a>
+                    <a href="#themes" class="text-gray-700 hover:text-maroon-600 transition duration-150 font-medium">Themes</a>
+                    <a href="#plan-trip" class="text-gray-700 hover:text-maroon-600 transition duration-150 font-medium">Plan Your Trip</a>
+                    <a href="file:///C:/Users/HP/Documents/aniket%20folder/1%20project%20in%20bca/contact.html" class="text-gray-700 hover:text-maroon-600 transition duration-150 font-medium">Contact</a>
+                </div>
+                
+<div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-maroon-600 focus:outline-none focus:ring-2 focus:ring-maroon-600 rounded-lg p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+<div id="mobile-menu" class="md:hidden hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#regions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-maroon-600">Regions</a>
+                <a href="#themes" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-maroon-600">Themes</a>
+                <a href="#plan-trip" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-maroon-600">Plan Your Trip</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-maroon-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN PAGE CONTENT CONTAINER -->
+<div id="main-content">
+        <!-- Hero Section (Visible on Home) -->
+<header id="hero-section" class="hero-section h-[75vh] flex items-center justify-center page-content page-visible" style="background-image: url('https://placehold.co/1200x600/500/FFF?text=Vibrant+Indian+Culture'); background-size: cover; background-position: center;">
+            <div class="hero-overlay absolute inset-0"></div>
+            <div class="max-w-5xl mx-auto text-center p-6 z-10">
+                <h1 class="text-5xl sm:text-7xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                    <span class="text-gold-500">Bharat Yatra:</span> A Journey for the Soul
+                </h1>
+                <p class="text-lg sm:text-xl text-saffron-100 mb-8 max-w-3xl mx-auto drop-shadow-md">
+                    Uncover the ancient mysteries, vibrant cultures, and breathtaking landscapes of India.
+                </p>
+                <div class="flex justify-center flex-wrap gap-4">
+                    <a href="#regions" class="bg-maroon-600 hover:bg-maroon-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                        Explore Destinations
+                    </a>
+                    <a href="#plan-trip" class="bg-white text-maroon-600 border-2 border-maroon-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-maroon-50 transition duration-300 transform hover:scale-105">
+                        Plan Your Custom Trip
+                    </a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Regions Section (Visible on Home) -->
+<section id="regions" class="py-16 md:py-24 bg-saffron-100 page-content page-visible">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-maroon-600 mb-12">
+                    Discover India's Diverse Regions
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- North Region Card -->
+<div class="bg-white rounded-xl shadow-cultural overflow-hidden card-hover transition transform duration-300">
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kiomoi.com%2Fattractions%2Fsunset-point-and-lover%2527s-lane-in-kasauli-1183&psig=AOvVaw3CxfRyFf9h4UzwLAEhDiTz&ust=1762112353567000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNDNgana0ZADFQAAAAAdAAAAABAE" alt="Sunrise over the Himalayas" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/607d8b/FFF?text=Himalayan+Sunrise';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">The Mystical North</h3>
+                            <p class="text-gray-600 text-sm">Home to the Himalayas, spiritual cities like Varanasi, and iconic monuments like the Taj Mahal. A journey of grandeur and devotion.</p>
+                            <a href="https://explorenorthblog.com/" button onclick="showDestinationDetail('North')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore North &raquo;</button></a>
+                        </div>
+                    </div>
+
+                    <!-- South Region Card -->
+<div class="bg-white rounded-xl shadow-cultural overflow-hidden card-hover transition transform duration-300">
+                        <img src="https://placehold.co/600x300/4CAF50/FFF?text=Kerala+Backwaters" alt="Backwaters of Kerala, South India" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/4CAF50/FFF?text=Kerala+Backwaters';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">The Tranquil South</h3>
+                            <p class="text-gray-600 text-sm">Lush backwaters, ancient temples, vibrant traditions, and serene beaches define the soul-soothing South.</p>
+                            <a href="https://www.southtourism.in/blog/"button onclick="showDestinationDetail('South')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore South &raquo;</button></a>
+                        </div>
+                    </div>
+
+                    <!-- West Region Card -->
+<div class="bg-white rounded-xl shadow-cultural overflow-hidden card-hover transition transform duration-300">
+                        <img src="https://placehold.co/600x300/F44336/FFF?text=Rajasthani+Fort" alt="Forts of Rajasthan, West India" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/F44336/FFF?text=Rajasthani+Fort';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">The Royal West</h3>
+                            <p class="text-gray-600 text-sm">Discover the regal charm of Rajasthan's palaces and deserts, the bustling markets of Gujarat, and the glamour of Mumbai.</p>
+                            <a href="https://explorewestplains.com/" onclick="showDestinationDetail('West')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore West &raquo;</button></a>
+                        </div>
+                    </div>
+
+                    <!-- East Region Card -->
+<div class="bg-white rounded-xl shadow-cultural overflow-hidden card-hover transition transform duration-300">
+                        <img src="https://placehold.co/600x300/795548/FFF?text=Lush+Tea+Gardens" alt="Tea Gardens in Darjeeling, East India" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x300/795548/FFF?text=Lush+Tea+Gardens';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">The Untamed East</h3>
+                            <p class="text-gray-600 text-sm">From the spiritual calm of Odisha to the untouched beauty and unique cultures of the Seven Sister States in the Northeast.</p>
+                            <a href="https://eastindiantraveller.com/" onclick="showDestinationDetail('East')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore East &raquo;</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Themes Section (Visible on Home) -->
+<section id="themes" class="py-16 md:py-24 bg-white page-content page-visible">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-maroon-600 mb-12">
+                    Curated Travel Themes
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+                    
+<div class="bg-saffron-100 p-8 rounded-xl shadow-cultural border-l-4 border-gold-500 card-hover transition transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-maroon-600 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 8a8 8 0 01-8-8H3m8 0a8 8 0 00-8-8h2.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <h3 class="text-2xl font-semibold text-gray-900">Cultural & Heritage</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Journey through India's glorious past, visiting ancient forts, temples, palaces, and UNESCO World Heritage sites. Witness vibrant festivals and traditions.
+                        </p>
+                        <a href="https://eastindiantraveller.com/" onclick="showDestinationDetail('East')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore culture & Heritage &raquo;</button></a>
+                    </div>
+
+                    
+<div class="bg-saffron-100 p-8 rounded-xl shadow-cultural border-l-4 border-gold-500 card-hover transition transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-maroon-600 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="text-2xl font-semibold text-gray-900">Spiritual & Wellness</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Find inner peace with yoga and meditation retreats, pilgrimage tours to sacred sites, and authentic Ayurvedic treatments in serene settings.
+                        </p>
+                        <a href="https://www.nivati.com/blog/what-is-spiritual-wellness-4-ways-to-achieve-it-in-the-workplace" onclick="showDestinationDetail('East')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore Spiritual & Wellness &raquo;</button></a>
+                    </div>
+
+                    
+<div class="bg-saffron-100 p-8 rounded-xl shadow-cultural border-l-4 border-gold-500 card-hover transition transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-maroon-600 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.003 2.003A5.996 5.996 0 0012 18a6 6 0 004.997-7.997l2.003-2.003m-12 12h-4"></path>
+                            </svg>
+                            <h3 class="text-2xl font-semibold text-gray-900">Adventure & Nature</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Embark on thrilling safaris to spot tigers, elephants, and exotic birds. Explore national parks, serene backwaters, and the majestic Himalayan landscapes.
+                        </p>
+                        <a href="https://www.multiplenatures.com/insight-posts/adventurous-nature" onclick="showDestinationDetail('East')" class="mt-4 inline-block text-maroon-600 hover:text-maroon-800 font-medium border-b-2 border-transparent hover:border-maroon-600 pb-1">Explore Adventure & Nature &raquo;</button></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Trip Planner Section (Visible on Home) -->
+<section id="plan-trip" class="py-16 md:py-24 bg-white page-content page-visible">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-maroon-600 mb-12">
+                    Plan Your Custom Trip
+                </h2>
+                <form id="trip-planner-form" class="bg-saffron-100 p-8 rounded-xl shadow-cultural">
+
+                    <!-- 1. Region Focus -->
+<div class="mb-6">
+                        <label for="region-select" class="block text-lg font-medium text-gray-700 mb-2">1. Where would you like to explore?</label>
+                        <select id="region-select" name="region" required class="w-full p-3 border border-maroon-300 rounded-lg focus:ring-maroon-600 focus:border-maroon-600">
+                            <option value="North">The Mystical North (Himalayas, Delhi, Taj Mahal)</option>
+                            <option value="South">The Tranquil South (Kerala, Temples, Beaches)</option>
+                            <option value="West">The Royal West (Rajasthan, Mumbai, Gujarat)</option>
+                            <option value="East">The Untamed East (Kolkata, Northeast, Odisha)</option>
+                            <option value="All">All of India (A comprehensive tour)</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Trip Duration -->
+<div class="mb-6">
+                        <label for="duration" class="block text-lg font-medium text-gray-700 mb-2">2. How many days will your journey last?</label>
+                        <input type="number" id="duration" name="duration" min="3" max="60" value="10" required class="w-full p-3 border border-maroon-300 rounded-lg focus:ring-maroon-600 focus:border-maroon-600">
+                    </div>
+
+                    <!-- 3. Theme Preference -->
+<div class="mb-6">
+                        <label class="block text-lg font-medium text-gray-700 mb-3">3. What is the main focus of your trip?</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="theme" value="Cultural" required class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Cultural & Heritage</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="theme" value="Spiritual" class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Spiritual & Wellness</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="theme" value="Adventure" class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Adventure & Nature</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="theme" value="Relaxing" class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Relaxing & Beaches</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Budget -->
+<div class="mb-6">
+                        <label class="block text-lg font-medium text-gray-700 mb-3">4. Which budget category fits your style?</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="budget" value="Economy" required class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Economy (Backpacking)</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="budget" value="Mid-Range" class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Mid-Range (Comfort)</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md cursor-pointer transition">
+                                <input type="radio" name="budget" value="Luxury" class="form-radio text-maroon-600 h-5 w-5">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Luxury (Heritage Hotels)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    
+<div class="text-center">
+                        <button type="submit" class="bg-maroon-600 hover:bg-maroon-700 text-gray font-semibold py-3 px-10 rounded-full shadow-xl transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-maroon-300">
+                            Generate My Trip Idea
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Action Callout Section (Visible on Home) -->
+<section id="spiritual" class="bg-maroon-600 py-16 page-content page-visible">
+            <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-white mb-4">
+                    Ready for your Bharat Yatra?
+                </h2>
+                <p class="text-saffron-100 text-lg mb-8">
+                    Let us help you craft a personalized journey that touches your soul and creates memories for a lifetime.
+                </p>
+                <a href="#plan-trip" class="bg-gold-500 text-maroon-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transform transition duration-300 hover:scale-105">
+                    Design My India Trip
+                </a>
+            </div>
+        </section>
+
+        <!-- NEW: Destination Detail Page (Hidden by Default) -->
+<section id="destination-detail" class="py-16 md:py-24 bg-white page-content page-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="showHomePage()" class="mb-8 text-maroon-600 hover:text-maroon-800 font-semibold flex items-center transition duration-150">
+                    <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to All Regions
+                </button>
+                
+<h2 id="detail-title" class="text-5xl font-extrabold text-maroon-600 mb-4"></h2>
+                <p id="detail-subtitle" class="text-xl text-gray-600 mb-8"></p>
+
+                
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <!-- Image and Key Info Column (Span 1) -->
+<div class="lg:col-span-1">
+                        <img id="detail-image" src="" alt="Destination Image" class="w-full h-auto rounded-xl shadow-cultural object-cover mb-6">
+                        <div class="bg-saffron-100 p-6 rounded-xl shadow-inner border border-gold-500">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Attractions</h3>
+                            <ul id="detail-attractions" class="space-y-2 text-gray-700 list-disc list-inside">
+                                <!-- Attractions list will be injected here -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Itinerary Column (Span 2) -->
+<div class="lg:col-span-2">
+                        <div class="bg-white p-6 rounded-xl shadow-cultural">
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4 border-b pb-2">Suggested Itinerary (7 Days)</h3>
+                            <div id="detail-itinerary" class="space-y-4 text-gray-700">
+                                <!-- Itinerary content will be injected here -->
+                            </div>
+                            <button onclick="showHomePage()" class="mt-8 bg-maroon-600 hover:bg-maroon-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                                Plan This Trip Now &raquo;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- END MAIN PAGE CONTENT CONTAINER -->
+
+    <!-- Footer -->
+<footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-6 mb-6">
+                
+
+<div>
+                    <h4 class="text-xl font-semibold mb-4 text-gold-500">Bharat Yatra</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="file:///C:/Users/HP/Documents/aniket%20folder/1%20project%20in%20bca/aboutus.html" class="text-gray-400 hover:text-gold-500">About Us</a></li>
+                        <li><a href="file:///C:/Users/HP/Documents/aniket%20folder/1%20project%20in%20bca/aboutus.html" class="text-gray-400 hover:text-gold-500">Our Vision</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold-500">Sustainability</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold-500">Careers</a></li>
+                    </ul>
+                </div>
+                
+
+<div>
+                    <h4 class="text-xl font-semibold mb-4 text-gold-500">Explore</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://www.northindiatours.org/" class="text-gray-400 hover:text-gold-500">North India Tours</a></li>
+                        <li><a href="https://www.enchantingtravels.com/destinations/india/south-india/things-to-do-in-south-india/" class="text-gray-400 hover:text-gold-500">South India Escapes</a></li>
+                        <li><a href="https://worldexpeditions.com/Blog/cultural-festivals-around-the-world" class="text-gray-400 hover:text-gold-500">Cultural Festivals</a></li>
+                        <li><a href="https://trekthehimalayas.com/" class="text-gray-400 hover:text-gold-500">Himalayan Treks</a></li>
+                    </ul>
+                </div>
+                
+
+<div>
+                    <h4 class="text-xl font-semibold mb-4 text-gold-500">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-gold-500">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold-500">Booking & Payments</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold-500">Visa Information</a></li>
+                        <li><a href="http://127.0.0.1:5500/contact.html" class="text-gray-400 hover:text-gold-500">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+
+<div>
+                    <h4 class="text-xl font-semibold mb-4 text-gold-500">Connect with us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.instagram.com/offx._an/" class="text-gray-400 hover:text-gold-500"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.636 4.938 4.938.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.148 3.252-1.636 4.779-4.938 4.938-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.779-1.636-4.938-4.938-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.636-4.779 4.938-4.938 1.265-.058 1.645-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.933.072-4.343.196-6.045 1.834-6.233 6.233-.058 1.266-.072 1.673-.072 4.933s.014 3.667.072 4.933c.188 4.399 1.89 6.037 6.233 6.233 1.266.058 1.673.072 4.933.072s3.667-.014 4.933-.072c4.343-.196 6.037-1.834 6.233-6.233.058-1.266.072-1.673.072-4.933s-.014-3.667-.072-4.933c-.196-4.343-1.834-6.037-6.233-6.233-1.266-.058-1.673-.072-4.933-.072zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 7.838a4.162 4.162 0 110 8.324 4.162 4.162 0 010-8.324zM16.936 6.136a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.588-1.333h2.412v-3h-3.974c-3.79 0-4.026 2.057-4.026 4.025v2.975z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.791-1.574 2.161-2.723-.951.558-2.007.957-3.131 1.173-.896-.957-2.173-1.557-3.591-1.557-2.714 0-4.918 2.203-4.918 4.917 0 .385.044.757.122 1.111-4.09-2.057-7.722-4.331-10.154-8.086-.424.724-.666 1.562-.666 2.47 0 1.708.869 3.22 2.188 4.097-.807-.026-1.566-.246-2.228-.614v.061c0 2.384 1.699 4.373 3.951 4.82-.413.111-.849.171-1.296.171-.318 0-.626-.031-.925-.088.631 1.956 2.45 3.376 4.604 3.417-1.684 1.324-3.805 2.116-6.102 2.116-.398 0-.79-.023-1.175-.069 2.179 1.397 4.768 2.213 7.54 2.213 9.043 0 13.97-7.49 13.97-13.984 0-.212-.005-.424-.015-.636.961-.695 1.794-1.566 2.455-2.553z"/></svg></a>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">Subscribe to our newsletter for exclusive offers and insights.</p>
+                    <input type="email" placeholder="Enter your email" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-500 mb-2">
+                    <button class="w-full bg-gold-500 hover:bg-yellow-400 text-gray-900 font-semibold py-3 rounded-lg transition duration-150">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center text-sm text-gray-500">
+                &copy; 2025 Bharat Yatra. All rights reserved. Made with love in India.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Trip Result Custom Modal (Hidden by Default) -->
+<div id="trip-result-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 id="modal-title" class="text-3xl font-bold text-maroon-600 mb-4">Your Custom Yatra Suggestion!</h3>
+            <div id="modal-body" class="text-gray-700 leading-relaxed mb-6">
+                <!-- Itinerary content will be injected here -->
+            </div>
+            <p id="modal-duration-info" class="text-sm font-medium text-gray-500 mb-4 italic"></p>
+            <button onclick="closeModal()" class="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-150">
+                Sounds good! Let's get started.
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- DATA STRUCTURE FOR DESTINATION DETAILS ---
+        const regionsData = {
+            'North': {
+                title: "The Mystical North",
+                subtitle: "Land of Himalayas, ancient empires, and spiritual awakening.",
+                image: "https://placehold.co/1200x600/607d8b/FFF?text=Himalayas+Varanasi",
+                attractions: ["Taj Mahal, Agra", "Varanasi Ghats", "Golden Temple, Amritsar", "Leh-Ladakh Monasteries"],
+                itinerary: [
+                    "Day 1-2: Delhi - Explore Old and New Delhi (Red Fort, Qutub Minar).",
+                    "Day 3-4: Agra - Visit the Taj Mahal and Agra Fort.",
+                    "Day 5-6: Varanasi - Witness the Ganga Aarti and explore the spiritual ghats.",
+                    "Day 7: Fly back from Varanasi or continue journey."
+                ]
+            },
+            'South': {
+                title: "The Tranquil South",
+                subtitle: "Lush tropical landscapes, Dravidian temple architecture, and serene backwaters.",
+                image: "https://placehold.co/1200x600/4CAF50/FFF?text=Kerala+Temples",
+                attractions: ["Kerala Backwaters", "Meenakshi Temple, Madurai", "Hampi Ruins", "Goa Beaches"],
+                itinerary: [
+                    "Day 1-2: Cochin/Kochi - Historic Fort Kochi and Spice Markets.",
+                    "Day 3-4: Alleppey - Overnight stay on a traditional houseboat in the backwaters.",
+                    "Day 5: Madurai - Visit the stunning Meenakshi Temple.",
+                    "Day 6-7: Fly to Chennai or relax on a Southern beach."
+                ]
+            },
+            'West': {
+                title: "The Royal West",
+                subtitle: "Majestic forts, glittering cities, and the colorful culture of the desert.",
+                image: "https://placehold.co/1200x600/F44336/FFF?text=Rajasthan+Palace",
+                attractions: ["Jaipur Pink City", "Jaisalmer Desert Fort", "Gateway of India, Mumbai", "Goa Beaches"],
+                itinerary: [
+                    "Day 1-2: Mumbai - Explore Bollywood, historic architecture, and marine drive.",
+                    "Day 3-4: Jaipur - Visit Amber Fort and Hawa Mahal (Palace of Winds).",
+                    "Day 5-6: Udaipur - Lake Pichola and City Palace, the Venice of the East.",
+                    "Day 7: Depart from Udaipur or proceed to Gujarat."
+                ]
+            },
+            'East': {
+                title: "The Untamed East",
+                subtitle: "Unique tribal cultures, colonial history, and the natural beauty of the Northeast.",
+                image: "https://placehold.co/1200x600/795548/FFF?text=Northeast+Tea+Gardens",
+                attractions: ["Victoria Memorial, Kolkata", "Kaziranga National Park (Assam)", "Darjeeling Tea Gardens", "Bhubaneswar Temples"],
+                itinerary: [
+                    "Day 1-2: Kolkata - Historical sightseeing (Victoria Memorial, Howrah Bridge).",
+                    "Day 3-4: Darjeeling - Visit a tea plantation and enjoy a toy train ride.",
+                    "Day 5-6: Guwahati/Shillong - Gateway to the scenic natural wonders of Meghalaya.",
+                    "Day 7: Explore the sacred temples of Odisha."
+                ]
+            }
+        };
+
+        const pages = document.querySelectorAll('.page-content');
+        const detailSection = document.getElementById('destination-detail');
+        const homeLogo = document.getElementById('home-logo');
+
+        // Function to show the selected page and hide all others
+        function navigateToPage(pageToShow) {
+            pages.forEach(page => {
+                if (page.id === pageToShow) {
+                    page.classList.remove('page-hidden');
+                    page.classList.add('page-visible');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    page.classList.add('page-hidden');
+                    page.classList.remove('page-visible');
+                }
+            });
+        }
+
+        // Show the Home Page (Hero, Regions, Themes, Plan Trip)
+        function showHomePage() {
+            navigateToPage('hero-section');
+            navigateToPage('regions');
+            navigateToPage('themes');
+            navigateToPage('plan-trip');
+            navigateToPage('spiritual');
+            detailSection.classList.add('page-hidden');
+        }
+
+        // Show the Destination Detail Page
+        function showDestinationDetail(regionKey) {
+            const data = regionsData[regionKey];
+
+            if (!data) {
+                console.error("Region data not found:", regionKey);
+                return;
+            }
+
+            // Populate the detail page elements
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-subtitle').textContent = data.subtitle;
+            document.getElementById('detail-image').src = data.image;
+            document.getElementById('detail-image').alt = data.title + " Image";
+
+            // Populate Attractions
+            const attractionsList = document.getElementById('detail-attractions');
+            attractionsList.innerHTML = '';
+            data.attractions.forEach(attraction => {
+                const li = document.createElement('li');
+                li.textContent = attraction;
+                attractionsList.appendChild(li);
+            });
+
+            // Populate Itinerary
+            const itineraryDiv = document.getElementById('detail-itinerary');
+            itineraryDiv.innerHTML = '';
+            data.itinerary.forEach(step => {
+                const p = document.createElement('p');
+                p.className = 'py-2 border-b border-gray-200';
+                // Highlight Day numbers
+                p.innerHTML = step.replace(/^(Day \d+)/, '<span class="font-semibold text-maroon-600">$1</span>');
+                itineraryDiv.appendChild(p);
+            });
+
+            // Hide all main pages
+            document.getElementById('hero-section').classList.add('page-hidden');
+            document.getElementById('regions').classList.add('page-hidden');
+            document.getElementById('themes').classList.add('page-hidden');
+            document.getElementById('plan-trip').classList.add('page-hidden');
+            document.getElementById('spiritual').classList.add('page-hidden');
+
+            // Show the detail page
+            detailSection.classList.remove('page-hidden');
+            detailSection.classList.add('page-visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Link the logo to the home page function
+        homeLogo.addEventListener('click', showHomePage);
+
+        // --- Mobile Menu Toggle ---
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // --- Trip Planner Logic (Existing) ---
+        const form = document.getElementById('trip-planner-form');
+        const modal = document.getElementById('trip-result-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const modalDurationInfo = document.getElementById('modal-duration-info');
+
+        function showModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('modal-show'), 10);
+        }
+
+        function closeModal() {
+            modal.classList.remove('modal-show');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        function generateTripPlan(region, theme, budget, duration) {
+            let title = "";
+            let description = "";
+
+            if (region === 'All') {
+                title = "The Grand Circle Tour";
+                description = `Since you chose a comprehensive tour, we suggest the **Golden Triangle** (Delhi, Agra, Jaipur) combined with ${duration > 10 ? 'a deep dive into the South' : 'a quick spiritual stop'}. Expect a journey filled with historic monuments and cultural diversity.`;
+            } else if (region === 'North' && theme === 'Spiritual' && budget === 'Luxury') {
+                title = "Himalayan Mysticism & Ganges Bliss";
+                description = "Experience the best of wellness with a **Luxury Yoga Retreat in Rishikesh**, followed by a private, guided visit to the Taj Mahal and a serene boat ride on the Ganges in Varanasi.";
+            } else if (region === 'North' && theme === 'Adventure') {
+                title = "High Altitude Thrills";
+                description = "An unforgettable road trip from **Manali to Leh/Ladakh** (or a similar Himalayan trek) focusing on breathtaking mountain passes, monasteries, and high-altitude camping. Pure adventure!";
+            } else if (region === 'South' && theme === 'Relaxing') {
+                title = "Kerala Backwater Serenity";
+                description = "A perfect blend of relaxation: spend your days on a traditional **houseboat in the backwaters of Kerala**, indulge in authentic Ayurvedic treatments, and unwind on the pristine beaches of Goa or Kovalam.";
+            } else if (region === 'South' && theme === 'Cultural') {
+                title = "Ancient Temple Circuit";
+                description = "Dive into history by exploring the architectural marvels of **Hampi, Madurai, and Mahabalipuram**. This trip focuses on UNESCO sites and ancient Dravidian temple culture, often leveraging local transport for an authentic experience.";
+            } else if (region === 'West' && budget === 'Luxury') {
+                title = "Regal Rajasthan Palaces";
+                description = "Live like royalty! Tour the pink city of Jaipur and the lake city of Udaipur, staying exclusively in **restored Heritage Palaces**. Includes private transfers and exclusive desert experiences.";
+            } else if (region === 'West' && theme === 'Adventure') {
+                title = "Desert Safari & Coastal Exploration";
+                description = "A dynamic trip combining thrilling **desert safaris in Jaisalmer** with a cultural exploration of the bustling streets and caves near Mumbai, offering a contrast of land and sea.";
+            } else if (region === 'East' && theme === 'Adventure') {
+                title = "Untamed Northeast Frontier";
+                description = "An immersive journey into the wilderness! Explore the unique wildlife in **Kaziranga National Park (Assam)** or the stunning landscapes of Meghalaya, focusing on deep nature and tribal culture.";
+            } else {
+                title = "The Classic Indian Gateway (Golden Triangle)";
+                description = "As a starting point, we recommend the legendary **Golden Triangle: Delhi, Agra, and Jaipur**. This route perfectly captures India's history, food, and architectural grandeur.";
+            }
+
+            return { title, description };
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const region = formData.get('region');
+            const duration = formData.get('duration');
+            const theme = formData.get('theme');
+            const budget = formData.get('budget');
+
+            const trip = generateTripPlan(region, theme, budget, duration);
+
+            modalTitle.textContent = trip.title;
+            modalBody.innerHTML = `<p>${trip.description}</p>`;
+            modalDurationInfo.textContent = `Based on your ${duration}-day, ${budget}-level, ${theme}-focused journey in the ${region} region.`;
+
+            showModal();
+        });
+    </script>
+</body>
+</html>

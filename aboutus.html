@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Yatra - About Us</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use a custom color and Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'indian-saffron': '#FF9933', // Saffron
+                        'indian-navy': '#000080',    // Navy Blue for accents
+                        'primary-blue': '#1e3a8a',   // Deep Blue
+                        'secondary-gold': '#d97706', // Gold/Ochre accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for subtle hover effects */
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <div class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-16 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-primary-blue mb-4 leading-tight">
+                Our Journey Begins Here
+            </h1>
+            <p class="text-xl text-gray-600">
+                At **Bharat Yatra**, we don't just plan trips—we curate experiences that connect you with the authentic heart and soul of India.
+            </p>
+        </header>
+
+        <!-- Mission & Vision Section -->
+        <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Mission Card -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indian-saffron card-hover transition duration-300">
+                <div class="flex items-center mb-4">
+                    <!-- Icon placeholder (using SVG for simplicity) -->
+                    <svg class="w-8 h-8 text-indian-saffron mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h2 class="text-3xl font-bold text-primary-blue">Our Mission</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed">
+                    To connect global explorers with the authentic, diverse, and vibrant heritage of India through meticulously designed, sustainable, and personalized travel itineraries. We aim to make every journey a meaningful story.
+                </p>
+            </div>
+
+            <!-- Vision Card -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-blue card-hover transition duration-300">
+                <div class="flex items-center mb-4">
+                    <!-- Icon placeholder (using SVG for simplicity) -->
+                    <svg class="w-8 h-8 text-primary-blue mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3a8 8 0 01-8-8v-2m-2-1h4"></path></svg>
+                    <h2 class="text-3xl font-bold text-primary-blue">Our Vision</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed">
+                    To become India's most trusted and celebrated travel curator, known for ethical operations, deep local partnerships, and commitment to preserving the cultural and natural beauty of the subcontinent.
+                </p>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="max-w-4xl mx-auto mb-16">
+            <h2 class="text-4xl font-extrabold text-center text-secondary-gold mb-6">Our Story</h2>
+            <div class="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-indian-saffron">
+                <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                    **Bharat Yatra** was born in 2018, not in a boardroom, but on the backroads of Rajasthan. Our founder, **Ravi Sharma**, realized that mass tourism often missed the genuine magic of India—the quiet wisdom of an ancient temple, the warmth of a home-cooked meal, the intricate patterns of a forgotten craft.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    We started small, designing bespoke itineraries for friends, focusing on local guides and sustainable accommodation. Today, while we've grown, our philosophy remains unchanged: every journey must be personal, responsible, and transformative. We partner only with local artisans, family-run hotels, and certified eco-friendly operators, ensuring your presence benefits the communities you visit.
+                </p>
+            </div>
+        </section>
+
+        <!-- Meet the Team Section -->
+        <section class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center text-primary-blue mb-10">Meet Our Curators</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Team Member 1: ANIKET CHAUHAN -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover transition duration-300">
+                    <!-- Placeholder Image (using a simple color block) -->
+                    <div class="w-24 h-24 bg-indian-saffron rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">RS</div>
+                    <h3 class="text-xl font-bold text-primary-blue">ANIKET Chauhan</h3>
+                    <p class="text-secondary-gold mb-3">Founder & Chief Explorer</p>
+                    <p class="text-sm text-gray-600">
+                        A lifelong traveler with a map of India etched into his memory. Ravi designs our signature journeys.
+                    </p>
+                </div>
+
+                <!-- Team Member 2: Aniket chauhan -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover transition duration-300">
+                    <div class="w-24 h-24 bg-primary-blue rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">PP</div>
+                    <h3 class="text-xl font-bold text-primary-blue">Aniket Chauhan</h3>
+                    <p class="text-secondary-gold mb-3">Head of Logistics & Operations</p>
+                    <p class="text-sm text-gray-600">
+                        Ensures every detail, from visas to local transport, is seamless. The backbone of every yatra.
+                    </p>
+                </div>
+
+                <!-- Team Member 3: Jatin ruhal -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover transition duration-300">
+                    <div class="w-24 h-24 bg-indian-saffron rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">AM</div>
+                    <h3 class="text-xl font-bold text-primary-blue">Jatin ruhal</h3>
+                    <p class="text-secondary-gold mb-3">Cultural & Heritage Specialist</p>
+                    <p class="text-sm text-gray-600">
+                        A history enthusiast who crafts our in-depth tours of temples, forts, and archaeological sites.
+                    </p>
+                </div>
+
+                <!-- Team Member 4: Jatin ruhal -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover transition duration-300">
+                    <div class="w-24 h-24 bg-primary-blue rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">ZK</div>
+                    <h3 class="text-xl font-bold text-primary-blue">Jatin ruhal</h3>
+                    <p class="text-secondary-gold mb-3">Customer Experience Lead</p>
+                    <p class="text-sm text-gray-600">
+                        Your dedicated contact for planning and during your trip, ensuring your journey exceeds expectations.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

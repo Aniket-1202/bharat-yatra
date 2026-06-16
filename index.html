@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .login-container {
+            background: rgba(243, 243, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+             padding: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        .btn-login {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .form-error {
+            display: none;
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body align ="center" class="min-h-screen flex items-center justify-center p-4">
+    <div class="login-container w-full max-w-md p-8">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2"><b>भारत यात्रा</h1></b>
+            <p class="text-gray-600"><b>Please sign in to your account to continue</b></p>
+        </div>
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label><br>
+                <input type="email" id="email" name="email" required 
+                       class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-0"
+                       placeholder="Enter your email">
+            </div>
+            <div>
+               <br>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label><br>
+                <input type="password" id="password" name="password" required 
+                       class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-0"
+                       placeholder="Enter your password">
+            </div>
+            <div class="flex items-center justify-between">
+                <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                </label>
+                <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+            </div>
+            <a href="file:///C:/Users/HP/Documents/aniket%20folder/1%20project%20in%20bca/project.html" type="submit" id="loginBtn" class="btn-login w-full py-3 px-4 text-white font-medium rounded-lg">Sign In</button></a>
+            <div id="errorMessage" class="form-error">Invalid email or password. Please try again.</div>
+        </form>
+        <div class="text-center mt-6">
+            <p class="text-gray-600">Don't have an account? <a href="http://127.0.0.1:5500/signup.html#" class="text-blue-600 hover:text-blue-800 font-medium">Sign up here</a></p>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation - in a real app, this would be server-side
+            if (email === 'ankanji1202@gmail.com' && password === 'aniket#123') {
+                alert('Login successful! Redirecting...');
+                // Simulate redirect
+                setTimeout(() => window.location.href = '#dashboard', 2000);
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(() => document.getElementById('errorMessage').style.display = 'none', 5000);
+            }
+        });
+    </script>
+</body>
+</html>
+</content>
+</create_file>
